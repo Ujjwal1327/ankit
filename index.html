@@ -501,10 +501,17 @@
                 <span class="field-error" data-error-for="message"></span>
               </div>
 
-              <button class="btn btn-primary btn-block btn-arrow" type="submit">
-                Send message
+              <!-- spam trap: hidden from people, bots fill it in -->
+              <div class="hp-field" aria-hidden="true">
+                <label for="f-company">Company</label>
+                <input id="f-company" name="company_hp" type="text" tabindex="-1" autocomplete="off">
+              </div>
+
+              <button class="btn btn-primary btn-block btn-arrow" type="submit" data-submit>
+                <span data-submit-label>Send message</span>
                 <span class="btn-icon"><svg class="i"><use href="#i-arrow"/></svg></span>
               </button>
+              <p class="form-status" role="alert" data-form-status></p>
               <p class="form-note">We only use your details to reply to you.</p>
             </form>
 

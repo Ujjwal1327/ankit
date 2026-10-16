@@ -4,6 +4,13 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------------------------------------------------------
+     Contact form → Google Sheet
+     Paste your Google Apps Script web app URL here (it ends with /exec).
+     Setup steps: see google-apps-script/Code.gs
+     --------------------------------------------------------- */
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzNpcwYlUEkG5hoHnEUK1nNOlp34_5d0yKyDj60Q_Z5X_YMktQIZu6ZqJliL3e1vxPJ/exec';
+
+  /* ---------------------------------------------------------
      Reddit growth data (update when new quarters come out)
      Source: Reddit, Inc. quarterly earnings releases (SEC filings)
      Values in millions, Q2 of each year.
@@ -236,7 +243,30 @@
   /* ---------------- Contact form ---------------- */
   const form = document.querySelector('[data-form]');
   const formSuccess = document.querySelector('[data-form-success]');
+  const formStatus = document.querySelector('[data-form-status]');
+  const submitBtn = document.querySelector('[data-submit]');
+  const submitLabel = document.querySelector('[data-submit-label]');
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const setStatus = (message) => { formStatus.textContent = message || ''; };
+
+  const setSending = (sending) => {
+    submitBtn.disabled = sending;
+    submitLabel.textContent = sending ? 'Sending…' : 'Send message';
+  };
+
+  const showSuccess = () => {
+    form.hidden = true;
+    formSuccess.hidden = false;
+    formSuccess.setAttribute('tabindex', '-1');
+    formSuccess.focus();
+  };
+
+  const sendToSheet = async (data) => {
+    const response = await fetch(SHEET_URL, { method: 'POST', body: new URLSearchParams(data) });
+    const result = await response.json();
+    if (result.result !== 'success') throw new Error(result.error || 'Unknown error');
+  };
 
   const setError = (name, message) => {
     const field = form.elements[name];
@@ -256,8 +286,11 @@
   };
 
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (submitBtn.disabled) return;
+      setStatus('');
+
       const data = Object.fromEntries(new FormData(form));
       const errors = validate(data);
       ['name', 'email', 'message'].forEach((name) => setError(name, errors[name]));
@@ -268,14 +301,29 @@
         return;
       }
 
-      // TODO: send the form data somewhere (email service, Google Sheet, CRM or your own API).
-      // `data` looks like: { name, email, website, package, message }
-      console.log('Contact form submitted:', data);
+      // spam trap was filled: act like it worked, send nothing
+      if (data.company_hp) {
+        showSuccess();
+        return;
+      }
 
-      form.hidden = true;
-      formSuccess.hidden = false;
-      formSuccess.setAttribute('tabindex', '-1');
-      formSuccess.focus();
+      if (!SHEET_URL) {
+        console.warn('SHEET_URL is empty in js/main.js. Paste your Google Apps Script web app URL.');
+        setStatus('The form is not connected yet. Please email us instead.');
+        return;
+      }
+
+      setSending(true);
+      try {
+        await sendToSheet(data);
+        form.reset();
+        showSuccess();
+      } catch (err) {
+        console.error('Contact form error:', err);
+        setStatus('Something went wrong. Please try again, or email us directly.');
+      } finally {
+        setSending(false);
+      }
     });
 
     form.addEventListener('input', (e) => {
@@ -284,6 +332,7 @@
 
     document.querySelector('[data-form-reset]').addEventListener('click', () => {
       form.reset();
+      setStatus('');
       formSuccess.hidden = true;
       form.hidden = false;
       form.elements.name.focus();

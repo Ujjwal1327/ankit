@@ -1370,7 +1370,18 @@ button, input, select, textarea { font: inherit; }
 }
 
 .form .btn { margin-top: 4px; }
+.form .btn:disabled { opacity: .7; cursor: progress; transform: none; box-shadow: none; }
+.form-status { font-size: 14px; color: #c5221f; text-align: center; }
+.form-status:empty { display: none; }
 .form-note { font-size: 13px; color: #8a8a8a; text-align: center; }
+
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 
 .form-success {
   display: flex;
