@@ -440,7 +440,7 @@ button, input, select, textarea { font: inherit; }
 }
 .hero-title em {
   font-style: normal;
-  color: var(--yellow);
+  color: var(--secondary);
 }
 
 .hero-sub {
