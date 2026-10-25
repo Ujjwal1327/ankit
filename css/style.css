@@ -1054,6 +1054,9 @@ button, input, select, textarea { font: inherit; }
 }
 .process-sticky > p { margin: 18px 0 30px; }
 .process-media { margin-top: 40px; }
+/* journey.png has empty transparent space above and below the artwork: crop it */
+.process-media.media--4x3 { aspect-ratio: 2 / 1; }
+.process-media img { object-position: 50% 33%; }
 
 .steps { position: relative; }
 .steps-line {
