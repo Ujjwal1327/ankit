@@ -1,8 +1,11 @@
 /**
- * Contact form → Google Sheet + email
+ * Website forms → Google Sheet + email
  *
- * Every form submission is added as a new row in the "Leads" tab,
- * and a copy is emailed to NOTIFY_EMAIL.
+ * Handles two forms from the website:
+ *  - Contact form (contact.html)            → "Leads" tab
+ *  - Reddit user form (reddit-user-form.html) → "Reddit Users" tab
+ * Each submission becomes a new row in its tab, and a copy is emailed to NOTIFY_EMAIL.
+ * The form says which one it is with a hidden field "form" (no field = contact form).
  *
  * Setup:
  *  1. Create a Google Sheet, then open Extensions → Apps Script.
@@ -12,19 +15,34 @@
  *     Check that the test email arrives.
  *  4. Deploy → New deployment → type "Web app".
  *     Execute as: Me. Who has access: Anyone. Deploy and allow access.
- *  5. Copy the Web app URL (ends with /exec) into the website's contact form.
+ *  5. Copy the Web app URL (ends with /exec) into the website forms' action="…".
  *
  * After editing this script later: Deploy → Manage deployments → Edit →
  * Version "New version" → Deploy. Otherwise the URL keeps running the old code.
  */
 
-const SHEET_NAME = 'Leads';
-const HEADERS = ['Timestamp', 'Name', 'Email', 'Website', 'Package', 'Message'];
-const FIELDS = ['name', 'email', 'website', 'package', 'message'];
+// New submissions are emailed here. Separate several addresses with commas.
+const NOTIFY_EMAIL = 'ankit65604@gmail.com';
 const MAX_LENGTH = 3000;
 
-// New leads are emailed here. Separate several addresses with commas.
-const NOTIFY_EMAIL = 'ankit65604@gmail.com';
+const FORMS = {
+  contact: {
+    sheet: 'Leads',
+    // [column header, form field name]
+    columns: [['Name', 'name'], ['Email', 'email'], ['Website', 'website'], ['Package', 'package'], ['Message', 'message']],
+    required: ['name', 'email', 'message'],
+    subject: (d) => 'New website lead: ' + d.name + (d.package ? ' (' + d.package + ')' : ''),
+    intro: 'New enquiry from the website contact form:',
+  },
+  'reddit-user': {
+    sheet: 'Reddit Users',
+    columns: [['Name', 'name'], ['Reddit profile', 'reddit'], ['Phone', 'phone'], ['Email', 'email'],
+      ['Social platform', 'social'], ['Social link', 'social_link']],
+    required: ['name', 'reddit', 'phone', 'email'],
+    subject: (d) => 'New Reddit user form: ' + d.name,
+    intro: 'New submission from the Reddit user form:',
+  },
+};
 
 function doPost(e) {
   const lock = LockService.getScriptLock();
@@ -36,19 +54,21 @@ function doPost(e) {
     // spam trap: real visitors never fill this hidden field
     if (params.company_hp) return json_({ result: 'success' });
 
-    const values = FIELDS.map((field) => clean_(params[field]));
-    const [name, email, , , message] = values;
-    if (!name || !email || !message) {
+    const form = FORMS[params.form] || FORMS.contact;
+    const data = {};
+    form.columns.forEach(([, field]) => { data[field] = text_(params[field]); });
+
+    if (form.required.some((field) => !data[field])) {
       return json_({ result: 'error', error: 'Missing required fields' });
     }
 
-    getSheet_().appendRow([new Date()].concat(values));
+    getSheet_(form).appendRow([new Date()].concat(form.columns.map(([, field]) => safeCell_(data[field]))));
 
-    // The lead is already saved, so a mail problem (e.g. daily quota) must not show the visitor an error.
+    // The row is already saved, so a mail problem (e.g. daily quota) must not show the visitor an error.
     try {
-      sendLeadEmail_(FIELDS.map((field) => text_(params[field])));
+      sendEmail_(form, data);
     } catch (mailErr) {
-      console.error('Lead saved, but the email failed: ' + mailErr);
+      console.error('Row saved, but the email failed: ' + mailErr);
     }
 
     return json_({ result: 'success' });
@@ -66,49 +86,49 @@ function doGet() {
 
 // Run once from the editor to grant email permission and check delivery. Does not add a row.
 function sendTestEmail() {
-  sendLeadEmail_(['Test lead', 'test@example.com', 'example.com', 'Pilot', 'This is a test email from the website contact form script.']);
+  sendEmail_(FORMS.contact, {
+    name: 'Test lead', email: 'test@example.com', website: 'example.com', package: 'Pilot',
+    message: 'This is a test email from the website forms script.',
+  });
 }
 
-function sendLeadEmail_(lead) {
-  const [name, email, website, pkg, message] = lead;
-  const rows = [
-    ['Name', name],
-    ['Email', email],
-    ['Brand / website', website],
-    ['Interested in', pkg],
-    ['Message', message],
-  ];
+function sendEmail_(form, data) {
+  const rows = form.columns.map(([label, field]) => [label, data[field]]);
   const sheetUrl = SpreadsheetApp.getActiveSpreadsheet().getUrl();
   const oneLine = (s) => String(s || '').replace(/[\r\n]+/g, ' ').slice(0, 80);
+  const flat = {};
+  Object.keys(data).forEach((k) => { flat[k] = oneLine(data[k]); });
 
-  const subject = 'New website lead: ' + oneLine(name) + (pkg ? ' (' + oneLine(pkg) + ')' : '');
-  const body = rows.map(([label, value]) => label + ': ' + (value || '-')).join('\n') +
-    '\n\nAll leads: ' + sheetUrl;
+  const subject = form.subject(flat);
+  const body = form.intro + '\n\n' +
+    rows.map(([label, value]) => label + ': ' + (value || '-')).join('\n') +
+    '\n\nAll submissions: ' + sheetUrl;
   const htmlBody =
     '<div style="font-family:Arial,sans-serif;font-size:14px;color:#111">' +
-    '<p style="margin:0 0 12px">New enquiry from the website contact form:</p>' +
+    '<p style="margin:0 0 12px">' + escapeHtml_(form.intro) + '</p>' +
     '<table cellpadding="6" style="border-collapse:collapse">' +
     rows.map(([label, value]) =>
-      '<tr><td style="color:#666;vertical-align:top;white-space:nowrap">' + label + '</td>' +
+      '<tr><td style="color:#666;vertical-align:top;white-space:nowrap">' + escapeHtml_(label) + '</td>' +
       '<td style="white-space:pre-wrap">' + escapeHtml_(value || '-') + '</td></tr>').join('') +
     '</table>' +
-    '<p style="margin:16px 0 0"><a href="' + sheetUrl + '">Open all leads in Google Sheets</a></p>' +
+    '<p style="margin:16px 0 0"><a href="' + sheetUrl + '">Open the Google Sheet</a> (tab: ' + escapeHtml_(form.sheet) + ')</p>' +
     '</div>';
 
   const options = { name: 'TIC Website', htmlBody: htmlBody };
   // "Reply" in your inbox goes straight to the person who filled in the form
-  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) options.replyTo = email;
+  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || '')) options.replyTo = data.email;
 
   MailApp.sendEmail(NOTIFY_EMAIL, subject, body, options);
 }
 
-function getSheet_() {
+function getSheet_(form) {
   const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = spreadsheet.getSheetByName(SHEET_NAME) || spreadsheet.insertSheet(SHEET_NAME);
+  const sheet = spreadsheet.getSheetByName(form.sheet) || spreadsheet.insertSheet(form.sheet);
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(HEADERS);
+    const headers = ['Timestamp'].concat(form.columns.map(([label]) => label));
+    sheet.appendRow(headers);
     sheet.setFrozenRows(1);
-    sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
   }
   return sheet;
 }
@@ -117,9 +137,8 @@ function text_(value) {
   return String(value || '').trim().slice(0, MAX_LENGTH);
 }
 
-function clean_(value) {
-  const text = text_(value);
-  // stop values like "=HYPERLINK(...)" from running as formulas in the sheet
+// stop values like "=HYPERLINK(...)" (or a phone number starting with "+") from running as formulas
+function safeCell_(text) {
   return /^[=+\-@]/.test(text) ? "'" + text : text;
 }
 
