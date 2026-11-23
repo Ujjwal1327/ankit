@@ -1,578 +1,1059 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Internet Catalysts | Reddit Marketing for Brands</title>
-  <meta name="description" content="We help brands grow through Reddit, from finding the right threads to creating content and posting it.">
-
-  <!-- Social preview (replace the image path once you have one) -->
-  <meta property="og:title" content="The Internet Catalysts | Reddit Marketing for Brands">
-  <meta property="og:description" content="We help brands grow through Reddit, from finding the right threads to creating content and posting it.">
-  <meta property="og:type" content="website">
-  <!-- <meta property="og:image" content="images/og-image.jpg"> -->
-
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="apple-touch-icon" href="assets/favicon.png">
-
+  <title>The Internet Catalysts: We Put Your Brand on Reddit</title>
+  <meta name="description"
+    content="Your potential customers are already discussing products, comparing solutions, and asking for recommendations on Reddit. We help your brand become part of those conversations.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&family=Roboto+Slab:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/style.css">
-  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
-<body>
 
-  <!-- Icon sprite (used via <svg><use href="#i-name"/></svg>) -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
-    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
-    <symbol id="i-trend" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
-    <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></symbol>
-    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
-    <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
-    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
-    <symbol id="i-message" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
-    <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
-    <symbol id="i-calendar" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
-    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path fill="currentColor" stroke="none" transform="translate(6.72 6.72) scale(0.44)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<body>
+  <!-- Icon sprite: reference with <svg class="icon"><use href="#i-name"/></svg> -->
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="i-chevron" viewBox="0 0 16 16">
+      <path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 16 16">
+      <path d="M3 8h10m0 0-4-4m4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 16 16">
+      <path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 16 16">
+      <path d="M8 3v10M3 8h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+    </symbol>
+    <symbol id="i-up" viewBox="0 0 16 16">
+      <path d="M8 2.5 13 8H10v5.5H6V8H3l5-5.5Z" fill="none" stroke="currentColor" stroke-width="1.4"
+        stroke-linejoin="round" />
+    </symbol>
+    <symbol id="i-down" viewBox="0 0 16 16">
+      <path d="M8 13.5 3 8h3V2.5h4V8h3l-5 5.5Z" fill="none" stroke="currentColor" stroke-width="1.4"
+        stroke-linejoin="round" />
+    </symbol>
+    <symbol id="i-comment" viewBox="0 0 16 16">
+      <path
+        d="M2.5 7.5c0-2.8 2.5-5 5.5-5s5.5 2.2 5.5 5-2.5 5-5.5 5c-.8 0-1.6-.1-2.3-.4L3 13l.6-2.3c-.7-.9-1.1-2-1.1-3.2Z"
+        fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" />
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 16 16">
+      <path d="M8 1.8 13 3.6v4c0 3-2.1 5.4-5 6.6-2.9-1.2-5-3.6-5-6.6v-4l5-1.8Z" fill="none" stroke="currentColor"
+        stroke-width="1.3" stroke-linejoin="round" />
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 16 16">
+      <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+      <path d="m10.5 10.5 3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+    </symbol>
+    <symbol id="i-spark" viewBox="0 0 16 16">
+      <path d="M8 1.5c.4 3.3 1.9 4.9 5.5 5.5-3.6.6-5.1 2.2-5.5 5.5-.4-3.3-1.9-4.9-5.5-5.5 3.6-.6 5.1-2.2 5.5-5.5Z"
+        fill="currentColor" />
+    </symbol>
+    <symbol id="i-ban" viewBox="0 0 16 16">
+      <circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+      <path d="M4.2 11.8 11.8 4.2" fill="none" stroke="currentColor" stroke-width="1.5" />
+    </symbol>
   </svg>
 
+  <div class="dot-field" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ============ NAVBAR ============ -->
-  <header class="nav" data-nav>
-    <div class="container">
-      <div class="nav-bar">
-        <a class="brand" href="#home">
-          <img class="brand-logo-img" src="assets/logo.png" width="955" height="247" alt="The Internet Catalysts">
-        </a>
+  <!-- Top announcement bar (sliding text). script.js duplicates the list for a seamless loop. -->
+  <div class="marquee" data-marquee>
+    <ul class="sr-only" aria-label="What we promise">
+      <li>Reddit Compliant</li>
+      <li>Visibility That Lasts</li>
+      <li>Consistent Execution</li>
+    </ul>
+    <div class="marquee-track" aria-hidden="true">
+      <ul class="marquee-group">
+        <li>Reddit Compliant<svg class="icon">
+            <use href="#i-sspark" />
+          </svg></li>
+        <li>Visibility That Lasts<svg class="icon">
+            <use href="#i-spark" />
+          </svg></li>
+        <li>Consistent Execution<svg class="icon">
+            <use href="#i-spark" />
+          </svg></li>
+        <li>Reddit Compliant<svg class="icon">
+            <use href="#i-spark" />
+          </svg></li>
+        <li>Visibility That Lasts<svg class="icon">
+            <use href="#i-spark" />
+          </svg></li>
+        <li>Consistent Execution<svg class="icon">
+            <use href="#i-spark" />
+          </svg></li>
+        <li>Reddit Compliant<svg class="icon">
+            <use href="#i-spark" />
+          </svg></li>
+        <li>Visibility That Lasts<svg class="icon">
+            <use href="#i-spark" />
+          </svg></li>
+        <li>Consistent Execution<svg class="icon">
+            <use href="#i-spark" />
+          </svg></li>
+        <li>Reddit Compliant<svg class="icon">
+            <use href="#i-spark" />
+          </svg></li>
+        <li>Visibility That Lasts<svg class="icon">
+            <use href="#i-spark" />
+          </svg></li>
+        <li>Consistent Execution<svg class="icon">
+            <use href="#i-spark" />
+          </svg></li>
+      </ul>
+    </div>
+  </div>
 
-        <nav class="nav-links" aria-label="Main">
-          <a href="#why">Why Reddit</a>
-          <a href="#growth">Growth</a>
-          <a href="#process">How we do it</a>
-          <a href="#pricing">Packages</a>
-          <a href="#contact">Contact</a>
-        </nav>
-
-        <a class="btn btn-primary btn-sm nav-cta" href="#contact">Book a call</a>
-
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" data-nav-toggle>
-          <span></span><span></span>
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><img src="logo.png" alt="The Internet Catalysts" width="955" height="247"></a>
+      <nav class="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="#why-reddit">Why Reddit</a></li>
+          <li><a href="#how-we-work">How We Work</a></li>
+          <li><a href="#our-work">Our Work</a></li>
+          <li><a href="#services">Services &amp; Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="contact.html" class="btn btn-dark btn-sm header-cta">Let's Talk<svg class="icon btn-arrow">
+            <use href="#i-chevron" />
+          </svg></a>
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav"
+          aria-label="Open menu">
+          <svg viewBox="0 0 20 20" class="icon" aria-hidden="true">
+            <path class="menu-icon-open" d="M3 6h14M3 10h14M3 14h14" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" />
+            <path class="menu-icon-close" d="M5 5l10 10M15 5 5 15" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" />
+          </svg>
         </button>
       </div>
-
-      <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
-        <a href="#why">Why Reddit</a>
-        <a href="#growth">Growth</a>
-        <a href="#process">How we do it</a>
-        <a href="#pricing">Packages</a>
-        <a href="#contact">Contact</a>
-        <a class="btn btn-primary" href="#contact">Book a call</a>
+    </div>
+    <div id="mobile-nav" class="mobile-nav" hidden>
+      <div class="container">
+        <ul>
+          <li><a href="#why-reddit">Why Reddit</a></li>
+          <li><a href="#how-we-work">How We Work</a></li>
+          <li><a href="#our-work">Our Work</a></li>
+          <li><a href="#services">Services &amp; Pricing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-accent btn-md btn-block">Let's Talk<svg class="icon btn-arrow">
+            <use href="#i-chevron" />
+          </svg></a>
       </div>
     </div>
   </header>
 
   <main id="main">
 
-    <!-- ============ HERO ============ -->
-    <section class="hero" id="home">
-      <div class="hero-bg" aria-hidden="true">
-        <span class="orb orb-1"></span>
-        <span class="orb orb-2"></span>
-        <span class="orb orb-3"></span>
-        <span class="hero-grid"></span>
-      </div>
-
+    <!-- ============ 1. HERO ============ -->
+    <section class="hero">
       <div class="container">
-        <div class="hero-inner">
-          <span class="pre-title pre-title--dark hero-anim" style="--d:0">Reddit marketing for brands</span>
-
-          <h1 class="hero-title" data-split>We help brands grow through <em>reddit</em></h1>
-
-          <p class="hero-sub hero-anim" style="--d:6">
-            From finding the right threads to creating content and posting it, we handle your whole Reddit presence.
-            Your brand shows up where buyers are already asking for recommendations.
-          </p>
-
-          <div class="hero-actions hero-anim" style="--d:7">
-            <a class="btn btn-primary btn-arrow" href="#contact">
-              Get started
-              <span class="btn-icon"><svg class="i"><use href="#i-arrow"/></svg></span>
-            </a>
-            <a class="btn btn-ghost" href="#process">See how it works</a>
+        <div class="hero-copy">
+          <h1>We Put Your Brand on Reddit.</h1>
+          <div class="hero-body">
+            <p>Turn Reddit conversations into brand opportunities through targeted research, strategic content creation,
+              and consistent community engagement.</p>
           </div>
-
-        </div>
-
-        <div class="hero-visual hero-anim hero-anim--scale" style="--d:9">
-          <div class="media media--16x9 media--dark">
-            <img src="assets/hero.webp" width="1672" height="941" fetchpriority="high" decoding="async"
-              alt="Illustration of Reddit-style discussion threads with upvotes, comments, a magnifying glass and a rising growth chart">
-          </div>
-
-          <div class="chip chip-1" aria-hidden="true">
-            <span class="chip-icon chip-icon--primary"><svg class="i"><use href="#i-search"/></svg></span>
-            <span class="chip-text"><strong>Relevant thread found</strong><small>r/smallbusiness</small></span>
-          </div>
-          <div class="chip chip-2" aria-hidden="true">
-            <span class="chip-icon chip-icon--yellow"><svg class="i"><use href="#i-message"/></svg></span>
-            <span class="chip-text"><strong>Comment posted</strong><small>Helpful answer, brand mentioned</small></span>
-          </div>
-          <div class="chip chip-3" aria-hidden="true">
-            <span class="chip-icon chip-icon--dark"><svg class="i"><use href="#i-trend"/></svg></span>
-            <span class="chip-text"><strong>Ranking on Google</strong><small>Thread shows up in search</small></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="ticker-wrap">
-        <p class="ticker-label">Communities where buyers ask for recommendations</p>
-        <div class="ticker" aria-hidden="true">
-          <div class="ticker-track">
-            <span>r/smallbusiness</span><span>r/startups</span><span>r/SaaS</span><span>r/Entrepreneur</span>
-            <span>r/marketing</span><span>r/productivity</span><span>r/BuyItForLife</span><span>r/personalfinance</span>
-            <span>r/gadgets</span><span>r/fitness</span><span>r/HomeImprovement</span><span>r/SkincareAddiction</span>
-            <!-- duplicate set for seamless loop -->
-            <span>r/smallbusiness</span><span>r/startups</span><span>r/SaaS</span><span>r/Entrepreneur</span>
-            <span>r/marketing</span><span>r/productivity</span><span>r/BuyItForLife</span><span>r/personalfinance</span>
-            <span>r/gadgets</span><span>r/fitness</span><span>r/HomeImprovement</span><span>r/SkincareAddiction</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ WHY REDDIT ============ -->
-    <section class="section" id="why">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="pre-title" data-reveal>Why Reddit</span>
-            <h2 class="h2" data-reveal style="--d:1">Your buyers are already on Reddit, asking what to buy</h2>
-          </div>
-          <div class="section-head-side" data-reveal style="--d:2">
-            <p>People come to Reddit for honest answers from real users. When your brand is part of those conversations, you reach buyers right when they are making a decision.</p>
-            <a class="link-arrow" href="#contact">Talk to us <svg class="i"><use href="#i-arrow"/></svg></a>
+          <div class="hero-cta">
+            <a href="contact.html" class="btn btn-accent btn-lg">Get Your Brand on Reddit<svg
+                class="icon btn-arrow">
+                <use href="#i-chevron" />
+              </svg></a>
           </div>
         </div>
 
-        <div class="bento">
-          <article class="card card--span2" data-reveal data-spotlight>
-            <span class="card-icon"><svg class="i"><use href="#i-trend"/></svg></span>
-            <div>
-              <p class="card-stat">130M+ <small>daily users</small></p>
-              <h3 class="h3">Fast-growing user base</h3>
-              <p>Reddit has more than doubled its daily users since 2023 and now reaches over 500 million people every week.</p>
-            </div>
-          </article>
+        <!-- Stand-in for the hero visual (brand comment marked, then the brand's subreddit). Replace .demo with a <video> or screenshots when ready. -->
+        <div class="hero-demo">
+          <div class="demo" data-demo>
+            <div class="demo-glow" aria-hidden="true"></div>
+            <div class="demo-stage">
 
-          <article class="card card--span2 card--primary" data-reveal style="--d:1" data-spotlight>
-            <span class="card-icon"><svg class="i"><use href="#i-cart"/></svg></span>
-            <div>
-              <h3 class="h3">Buyers close to ready to purchase</h3>
-              <p>People search Reddit for "best X for Y" right before they buy. A helpful answer there lands at the moment of decision.</p>
-            </div>
-          </article>
+              <div class="demo-scene" data-active="true" role="img"
+                aria-label="A Reddit thread where a helpful comment recommends the brand, and another user replies that they'll try it.">
+                <div class="thread-card" aria-hidden="true">
+                  <div class="demo-item t-meta" style="--d:0ms">
+                    <span class="avatar" style="--c:#10b981">F</span>
+                    <span class="t-strong">r/freelance</span><span>· 6h</span>
+                  </div>
+                  <h3 class="demo-item t-title" style="--d:120ms">What invoicing tool do you actually use as a
+                    freelancer?</h3>
+                  <p class="demo-item t-body" style="--d:200ms">Spreadsheets aren't cutting it anymore. Chasing late
+                    payments is eating my weekends.</p>
+                  <div class="demo-item t-actions" style="--d:260ms">
+                    <span class="score score--dark"><svg class="icon">
+                        <use href="#i-up" />
+                      </svg><span>1.2k</span><svg class="icon">
+                        <use href="#i-down" />
+                      </svg></span>
+                    <span class="pill pill--dark"><svg class="icon">
+                        <use href="#i-comment" />
+                      </svg>214</span>
+                  </div>
 
-          <article class="card card--span2" data-reveal style="--d:2" data-spotlight>
-            <span class="card-icon"><svg class="i"><use href="#i-shield"/></svg></span>
-            <div>
-              <h3 class="h3">Builds trust around your brand</h3>
-              <p>Recommendations from real users carry more weight than ads. Showing up in honest discussions earns you credibility.</p>
-            </div>
-          </article>
+                  <div class="t-comments">
+                    <div class="demo-item comment" style="--d:700ms">
+                      <span class="avatar" style="--c:#f43f5e">D</span>
+                      <div class="comment-main">
+                        <p class="comment-meta"><span class="t-strong">u/designbyjules</span> · 5h</p>
+                        <p class="comment-text">I just use a spreadsheet tbh, but it gets messy once you have more than
+                          a few clients.</p>
+                        <span class="score score--dark"><svg class="icon">
+                            <use href="#i-up" />
+                          </svg><span>48</span><svg class="icon">
+                            <use href="#i-down" />
+                          </svg></span>
+                      </div>
+                    </div>
 
-          <article class="card card--span2" data-reveal data-spotlight>
-            <span class="card-icon"><svg class="i"><use href="#i-star"/></svg></span>
-            <div>
-              <h3 class="h3">Improves your brand's image</h3>
-              <p>Useful, thoughtful contributions shape how people talk about you, in threads that stay up and get read for years.</p>
-            </div>
-          </article>
-
-          <article class="card card--span4 card--yellow card--split" data-reveal style="--d:1" data-spotlight>
-            <div class="card-split-text">
-              <span class="card-icon"><svg class="i"><use href="#i-search"/></svg></span>
-              <div>
-                <h3 class="h3">Threads rank on Google</h3>
-                <p>Reddit threads often show up at the top of Google results. Once you're in the thread, you're on the web.</p>
-              </div>
-            </div>
-
-            <div class="serp" aria-hidden="true">
-              <div class="serp-bar">
-                <svg class="i"><use href="#i-search"/></svg>
-                <span class="serp-query">best crm for small business</span>
-              </div>
-              <div class="serp-result serp-result--hit">
-                <div class="serp-site"><span class="serp-fav"></span>reddit.com › r/smallbusiness</div>
-                <div class="serp-title">Which CRM do you actually use? : r/smallbusiness</div>
-                <div class="serp-line"></div>
-                <div class="serp-line serp-line--short"></div>
-              </div>
-              <div class="serp-result">
-                <div class="serp-site"><span class="serp-fav serp-fav--gray"></span>example.com</div>
-                <div class="serp-line serp-line--title"></div>
-                <div class="serp-line serp-line--short"></div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ REDDIT GROWTH (CHART) ============ -->
-    <section class="section" id="growth">
-      <div class="container">
-        <div class="growth-card">
-          <span class="orb orb-growth" aria-hidden="true"></span>
-
-          <div class="growth-text">
-            <span class="pre-title pre-title--dark" data-reveal>Reddit by the numbers</span>
-            <h2 class="h2" data-reveal style="--d:1">Reddit keeps growing, and so does the opportunity</h2>
-            <p data-reveal style="--d:2">Daily users have more than doubled in three years, and over half a billion people now visit Reddit every week.</p>
-
-            <div class="stats">
-              <div class="stat" data-reveal style="--d:3">
-                <span class="stat-value" data-count="130.3" data-decimals="1" data-suffix="M">130.3M</span>
-                <span class="stat-label">Daily active users, Q2 2026</span>
-              </div>
-              <div class="stat" data-reveal style="--d:4">
-                <span class="stat-value" data-count="514.6" data-decimals="1" data-suffix="M">514.6M</span>
-                <span class="stat-label">Weekly active users, Q2 2026</span>
-              </div>
-              <div class="stat" data-reveal style="--d:5">
-                <span class="stat-value" data-count="2.2" data-decimals="1" data-suffix="×">2.2×</span>
-                <span class="stat-label">Daily user growth since 2023</span>
-              </div>
-            </div>
-          </div>
-
-          <figure class="chart" data-reveal style="--d:2" data-chart>
-            <figcaption class="chart-head">
-              <span class="chart-title">Daily active users</span>
-              <span class="chart-sub">Millions, Q2 of each year</span>
-            </figcaption>
-            <div class="chart-plot" data-chart-plot></div>
-            <p class="chart-source">Source: Reddit, Inc. quarterly earnings releases (SEC filings)</p>
-            <details class="chart-table">
-              <summary>View data as a table</summary>
-              <table data-chart-table>
-                <thead><tr><th scope="col">Quarter</th><th scope="col">Daily users (M)</th><th scope="col">Weekly users (M)</th></tr></thead>
-                <tbody></tbody>
-              </table>
-            </details>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ HOW WE DO IT ============ -->
-    <section class="section" id="process">
-      <div class="container">
-        <div class="process">
-          <div class="process-side">
-            <div class="process-sticky">
-              <span class="pre-title" data-reveal>How we do it</span>
-              <h2 class="h2" data-reveal style="--d:1">Five steps from your brand to the right thread</h2>
-              <p data-reveal style="--d:2">We handle everything end to end. You approve the plan, we do the work and show you the results.</p>
-              <a class="btn btn-dark btn-arrow" href="#contact" data-reveal style="--d:3">
-                Start with step one
-                <span class="btn-icon"><svg class="i"><use href="#i-arrow"/></svg></span>
-              </a>
-
-              <div class="media media--4x3 process-media" data-reveal style="--d:4">
-                <img src="assets/journey.png" width="1448" height="1086" loading="lazy" decoding="async"
-                  alt="Illustration of the workflow: brand, audience, communities, threads, content, account and results">
-              </div>
-            </div>
-          </div>
-
-          <div class="steps" data-steps>
-            <span class="steps-line" aria-hidden="true"><span class="steps-line-fill"></span></span>
-            <ol class="steps-list">
-
-            <li class="step" data-reveal>
-              <span class="step-num">01</span>
-              <div class="step-body">
-                <h3 class="h3">Brand Research</h3>
-                <p>Understand the brand, product, competitors, and goals.</p>
-              </div>
-            </li>
-            <li class="step" data-reveal>
-              <span class="step-num">02</span>
-              <div class="step-body">
-                <h3 class="h3">Audience Research</h3>
-                <p>Identify relevant subreddits, discussions, and target users.</p>
-              </div>
-            </li>
-            <li class="step" data-reveal>
-              <span class="step-num">03</span>
-              <div class="step-body">
-                <h3 class="h3">Content Strategy &amp; Creation</h3>
-                <p>Decide what to post and write the content.</p>
-              </div>
-            </li>
-            <li class="step" data-reveal>
-              <span class="step-num">04</span>
-              <div class="step-body">
-                <h3 class="h3">Publishing &amp; Engagement</h3>
-                <p>Publish posts, participate in discussions, and respond to comments.</p>
-              </div>
-            </li>
-            <li class="step" data-reveal>
-              <span class="step-num">05</span>
-              <div class="step-body">
-                <h3 class="h3">Tracking &amp; Reporting</h3>
-                <p>Monitor performance and report results.</p>
-              </div>
-            </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PACKAGES ============ -->
-    <section class="section" id="pricing">
-      <div class="container">
-        <div class="section-head section-head--center">
-          <span class="pre-title" data-reveal>Packages</span>
-          <h2 class="h2" data-reveal style="--d:1">Simple pricing. Pay for what we post.</h2>
-          <p data-reveal style="--d:2">Start small with single comments and posts, or let us run your Reddit presence every month.</p>
-        </div>
-
-        <div class="pricing-grid">
-          <!-- STARTER -->
-          <article class="price-card" data-reveal>
-            <div class="price-top">
-              <span class="price-name">Starter</span>
-              <p class="price-desc">Get visible on Reddit and in AI answers.</p>
-            </div>
-            <div class="price-amounts">
-              <p class="price"><span class="price-num">$789</span><span class="price-unit">/ month</span></p>
-              <p class="price price--second"><span class="price-unit">30 reddit mentions including post and comment.</span></p>
-            </div>
-            <ul class="price-list">
-              <li><svg class="i"><use href="#i-check"/></svg>Pay only for the comments and posts we publish</li>
-              <li><svg class="i"><use href="#i-check"/></svg>A Reddit presence strategy for your brand</li>
-              <li><svg class="i"><use href="#i-check"/></svg>Content written by our professional team</li>
-              <li><svg class="i"><use href="#i-check"/></svg>Show up in existing discussions</li>
-              <li><svg class="i"><use href="#i-check"/></svg>Generate demand for your product on Reddit</li>
-              <li><svg class="i"><use href="#i-check"/></svg>Build AI citation and visibility traction</li>
-            </ul>
-            <a class="btn btn-dark btn-block" href="#contact" data-package="Starter">Book a call</a>
-          </article>
-
-
-
-          <!-- AGENCIES & BRANDS -->
-          <article class="price-card" data-reveal style="--d:1">
-            <div class="price-top">
-              <span class="price-name">Agencies &amp; brands</span>
-              <p class="price-desc">Your reliable Reddit partner, every month.</p>
-            </div>
-            <div class="price-amounts">
-              <p class="price"><span class="price-num">Custom</span></p>
-              <p class="price price--second"><span class="price-unit">Monthly plan built around your volume and goals</span></p>
-            </div>
-            <ul class="price-list">
-              <li><svg class="i"><use href="#i-check"/></svg>High-volume monthly Reddit mentions</li>
-              <li><svg class="i"><use href="#i-check"/></svg>Split the package across your clients or products</li>
-              <li><svg class="i"><use href="#i-check"/></svg>Posts and comments with links, where the community allows</li>
-              <li><svg class="i"><use href="#i-check"/></svg>Priority publishing schedule</li>
-              <li><svg class="i"><use href="#i-check"/></svg>Volume discounts on posts and comments</li>
-              <li><svg class="i"><use href="#i-check"/></svg>Dedicated account manager and detailed reporting</li>
-            </ul>
-            <a class="btn btn-dark btn-block" href="#contact" data-package="Agencies &amp; brands">Book a call</a>
-          </article>
-                    <!-- MEDIUM (pricing to be decided: update price + features here) -->
-          <!-- <article class="price-card price-card--featured" data-reveal style="--d:1">
-            <span class="price-badge">New</span>
-            <div class="price-top">
-              <span class="price-name">Medium</span>
-              <p class="price-desc">A monthly bundle for brands ready to grow on Reddit.</p>
-            </div>
-            <div class="price-amounts">
-              <p class="price"><span class="price-num price-num--text">Coming soon</span></p>
-              <p class="price price--second"><span class="price-unit">Pricing will be announced shortly</span></p>
-            </div>
-            <ul class="price-list">
-              <li><svg class="i"><use href="#i-check"/></svg>Everything in Basic</li>
-              <li><svg class="i"><use href="#i-check"/></svg>A monthly mix of posts and comments</li>
-              <li><svg class="i"><use href="#i-check"/></svg>Ongoing thread monitoring</li>
-              <li><svg class="i"><use href="#i-check"/></svg>Monthly results report</li>
-            </ul>
-            <a class="btn btn-primary btn-block" href="#contact" data-package="Medium">Get notified</a>
-          </article> -->
-        </div>
-
-        <p class="pricing-note" data-reveal>All prices in USD. Not sure which one fits? <a href="#contact">Tell us about your brand</a> and we'll suggest one.</p>
-      </div>
-    </section>
-
-    <!-- ============ CONTACT ============ -->
-    <section class="contact" id="contact">
-      <div class="hero-bg" aria-hidden="true">
-        <span class="orb orb-4"></span>
-        <span class="hero-grid"></span>
-      </div>
-
-      <div class="container">
-        <div class="contact-grid">
-          <div class="contact-text">
-            <span class="pre-title pre-title--dark" data-reveal>Contact</span>
-            <h2 class="h2" data-reveal style="--d:1">Let's get your brand into the right conversations</h2>
-            <p data-reveal style="--d:2">Tell us a little about your brand and what you sell. We'll get back to you with ideas for where to start on Reddit.</p>
-
-            <ul class="contact-info">
-              <li data-reveal style="--d:3">
-                <span class="contact-icon"><svg class="i"><use href="#i-mail"/></svg></span>
-                <span><small>Email us</small><a href="mailto:theinternetcatalysts@gmail.com">theinternetcatalysts@gmail.com</a></span>
-              </li>
-              <li data-reveal style="--d:4">
-                <span class="contact-icon"><svg class="i"><use href="#i-phone"/></svg></span>
-                <span><small>Call us</small><a href="tel:+919430455228">+91 94304 55228</a></span>
-              </li>
-              <li data-reveal style="--d:5">
-                <span class="contact-icon"><svg class="i"><use href="#i-whatsapp"/></svg></span>
-                <span><small>Chat on WhatsApp</small><a href="https://wa.me/919430455228" target="_blank" rel="noopener">+91 94304 55228</a></span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="form-card" data-reveal style="--d:2">
-            <form class="form" id="contact-form" novalidate data-form>
-              <div class="form-row">
-                <div class="field">
-                  <label for="f-name">Name <span aria-hidden="true">*</span></label>
-                  <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
-                  <span class="field-error" data-error-for="name"></span>
-                </div>
-                <div class="field">
-                  <label for="f-email">Email <span aria-hidden="true">*</span></label>
-                  <input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
-                  <span class="field-error" data-error-for="email"></span>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="field">
-                  <label for="f-website">Brand website</label>
-                  <input id="f-website" name="website" type="text" autocomplete="url" placeholder="yourbrand.com">
-                </div>
-                <div class="field">
-                  <label for="f-package">Package</label>
-                  <div class="select-wrap">
-                    <select id="f-package" name="package">
-                      <option value="Not sure yet">Not sure yet</option>
-                      <option value="Starter">Starter</option>
-                      <option value="Agencies &amp; brands">Agencies &amp; brands</option>
-                    </select>
+                    <div class="demo-highlight" style="--d:2000ms">
+                      <span class="demo-tag" style="--d:2200ms">Brand mention</span>
+                      <div class="demo-item comment" style="--d:1300ms">
+                        <span class="avatar" style="--c:#f43f5e">M</span>
+                        <div class="comment-main">
+                          <p class="comment-meta"><span class="t-strong">u/maya_builds</span> · 4h</p>
+                          <p class="comment-text">Switched to <b class="t-white">YourBrand</b> last year. Recurring
+                            invoices + automatic reminders saved me hours every month, and late payments dropped a lot.
+                            <span class="t-dim">(Disclosure: I work with them.)</span>
+                          </p>
+                          <span class="score score--dark is-up"><svg class="icon">
+                              <use href="#i-up" />
+                            </svg><span>312</span><svg class="icon">
+                              <use href="#i-down" />
+                            </svg></span>
+                        </div>
+                      </div>
+                      <div class="reply">
+                        <div class="demo-item comment" style="--d:3200ms">
+                          <span class="avatar" style="--c:#14b8a6">K</span>
+                          <div class="comment-main">
+                            <p class="comment-meta"><span class="t-strong">u/kev_codes</span> · 3h</p>
+                            <p class="comment-text">Didn't know about this, trying it today. Thanks!</p>
+                            <span class="score score--dark"><svg class="icon">
+                                <use href="#i-up" />
+                              </svg><span>41</span><svg class="icon">
+                                <use href="#i-down" />
+                              </svg></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div class="field">
-                <label for="f-message">Tell us about your brand <span aria-hidden="true">*</span></label>
-                <textarea id="f-message" name="message" rows="5" placeholder="What do you sell, and who are your customers?" required></textarea>
-                <span class="field-error" data-error-for="message"></span>
+              <div class="demo-scene" data-active="false" aria-hidden="true" inert role="img"
+                aria-label="The brand's own subreddit with thousands of members and active discussions.">
+                <div class="sub-card" aria-hidden="true">
+                  <div class="demo-item sub-banner" style="--d:0ms"></div>
+                  <div class="sub-body">
+                    <div class="demo-item sub-head" style="--d:150ms">
+                      <span class="sub-icon">YB</span>
+                      <div class="sub-name">
+                        <p class="sub-title">r/YourBrand</p>
+                        <p class="sub-desc">The official community for YourBrand users</p>
+                      </div>
+                      <span class="sub-joined">Joined</span>
+                    </div>
+                    <div class="demo-item sub-stats" style="--d:350ms">
+                      <p><b>12.4k</b><span>Members</span></p>
+                      <p><b><i class="online-dot"></i>186</b><span>Online</span></p>
+                      <p><b>Top 5%</b><span>By activity</span></p>
+                    </div>
+                    <div class="sub-posts">
+                      <div class="demo-item sub-post" style="--d:700ms">
+                        <div class="sub-post-main">
+                          <p class="sub-post-title"><span class="pin">●</span>Welcome! Start here: FAQs, setup guides
+                            &amp; roadmap</p>
+                          <p class="sub-post-meta">Pinned by moderators</p>
+                        </div>
+                        <span class="score score--dark"><svg class="icon">
+                            <use href="#i-up" />
+                          </svg><span>96</span><svg class="icon">
+                            <use href="#i-down" />
+                          </svg></span>
+                        <span class="sub-post-comments"><svg class="icon">
+                            <use href="#i-comment" />
+                          </svg>24</span>
+                      </div>
+                      <div class="demo-item sub-post" style="--d:1050ms">
+                        <div class="sub-post-main">
+                          <p class="sub-post-title">Show &amp; tell: how I automated my monthly invoicing</p>
+                          <p class="sub-post-meta">u/lena_studio · 2h</p>
+                        </div>
+                        <span class="score score--dark"><svg class="icon">
+                            <use href="#i-up" />
+                          </svg><span>342</span><svg class="icon">
+                            <use href="#i-down" />
+                          </svg></span>
+                        <span class="sub-post-comments"><svg class="icon">
+                            <use href="#i-comment" />
+                          </svg>58</span>
+                      </div>
+                      <div class="demo-item sub-post" style="--d:1400ms">
+                        <div class="sub-post-main">
+                          <p class="sub-post-title">Feature request thread (November)</p>
+                          <p class="sub-post-meta">u/YourBrand_mod · 1d</p>
+                        </div>
+                        <span class="score score--dark"><svg class="icon">
+                            <use href="#i-up" />
+                          </svg><span>128</span><svg class="icon">
+                            <use href="#i-down" />
+                          </svg></span>
+                        <span class="sub-post-comments"><svg class="icon">
+                            <use href="#i-comment" />
+                          </svg>211</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <!-- spam trap: hidden from people, bots fill it in -->
-              <div class="hp-field" aria-hidden="true">
-                <label for="f-company">Company</label>
-                <input id="f-company" name="company_hp" type="text" tabindex="-1" autocomplete="off">
-              </div>
-
-              <button class="btn btn-primary btn-block btn-arrow" type="submit" data-submit>
-                <span data-submit-label>Send message</span>
-                <span class="btn-icon"><svg class="i"><use href="#i-arrow"/></svg></span>
-              </button>
-              <p class="form-status" role="alert" data-form-status></p>
-              <p class="form-note">We only use your details to reply to you.</p>
-            </form>
-
-            <div class="form-success" data-form-success hidden>
-              <span class="success-icon"><svg class="i"><use href="#i-check"/></svg></span>
-              <h3 class="h3">Thanks, message received!</h3>
-              <p>We'll get back to you soon with ideas for your brand.</p>
-              <button class="btn btn-dark" type="button" data-form-reset>Send another message</button>
             </div>
+            <div class="demo-switch">
+              <button type="button" class="demo-tab is-active" aria-pressed="true"><span class="demo-num">01</span>Brand
+                mention in a relevant thread<span class="demo-bar"><span class="demo-progress"></span></span></button>
+              <button type="button" class="demo-tab" aria-pressed="false"><span class="demo-num">02</span>Your own brand
+                community<span class="demo-bar"><span class="demo-progress"></span></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2. WHY REDDIT ============ -->
+    <section id="why-reddit" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Why Reddit</p>
+          <h2>Your Customers Are Already on Reddit. Are You?</h2>
+          <div class="section-body">
+            <p>For your brand, that's a chance to reach people who are already interested in what you offer.</p>
+          </div>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <div class="feature-text">
+              <p class="eyebrow">Active communities</p>
+              <h3 class="feature-title">A community for every product.</h3>
+              <p>Reach niche audiences across SaaS, finance, technology, e-commerce, lifestyle, and more.</p>
+            </div>
+            <div class="frame frame--blue frame--left">
+              <div class="frame-panel">
+                <div class="mock" role="img"
+                  aria-label="A grid of Reddit communities across SaaS, finance, technology, e-commerce, lifestyle and more.">
+                  <div aria-hidden="true">
+                    <p class="mock-label">Communities for every product</p>
+                    <div class="community-grid">
+                      <div class="community"><span class="community-icon" style="--c:#0ea5e9">r/</span>
+                        <div class="community-main">
+                          <p class="community-name">r/SaaS</p>
+                          <p class="community-topic">SaaS</p>
+                        </div><span class="join">Join</span>
+                      </div>
+                      <div class="community"><span class="community-icon" style="--c:#10b981">r/</span>
+                        <div class="community-main">
+                          <p class="community-name">r/personalfinance</p>
+                          <p class="community-topic">Finance</p>
+                        </div><span class="join">Join</span>
+                      </div>
+                      <div class="community"><span class="community-icon" style="--c:#6366f1">r/</span>
+                        <div class="community-main">
+                          <p class="community-name">r/technology</p>
+                          <p class="community-topic">Technology</p>
+                        </div><span class="join">Join</span>
+                      </div>
+                      <div class="community"><span class="community-icon" style="--c:#f59e0b">r/</span>
+                        <div class="community-main">
+                          <p class="community-name">r/ecommerce</p>
+                          <p class="community-topic">E-commerce</p>
+                        </div><span class="join">Join</span>
+                      </div>
+                      <div class="community"><span class="community-icon" style="--c:#f43f5e">r/</span>
+                        <div class="community-main">
+                          <p class="community-name">r/BuyItForLife</p>
+                          <p class="community-topic">Lifestyle</p>
+                        </div><span class="join">Join</span>
+                      </div>
+                      <div class="community"><span class="community-icon" style="--c:#14b8a6">r/</span>
+                        <div class="community-main">
+                          <p class="community-name">r/smallbusiness</p>
+                          <p class="community-topic">Business</p>
+                        </div><span class="join">Join</span>
+                      </div>
+                      <div class="community"><span class="community-icon" style="--c:#f97316">r/</span>
+                        <div class="community-main">
+                          <p class="community-name">r/DIY</p>
+                          <p class="community-topic">Home</p>
+                        </div><span class="join">Join</span>
+                      </div>
+                      <div class="community"><span class="community-icon" style="--c:#8b5cf6">r/</span>
+                        <div class="community-main">
+                          <p class="community-name">r/fitness</p>
+                          <p class="community-topic">Health</p>
+                        </div><span class="join">Join</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature feature--flip">
+            <div class="feature-text">
+              <p class="eyebrow">Google visibility</p>
+              <h3 class="feature-title">Discussions that keep ranking.</h3>
+              <p>Reddit discussions can appear in Google search results and continue attracting attention.</p>
+            </div>
+            <div class="frame frame--orange frame--right">
+              <div class="frame-panel">
+                <div class="mock" role="img"
+                  aria-label="A search results page for &quot;best invoicing app for freelancers&quot; with a Reddit discussion from r/freelance ranking at the top.">
+                  <div aria-hidden="true">
+                    <div class="serp-search"><svg class="icon">
+                        <use href="#i-search" />
+                      </svg><span>best invoicing app for freelancers</span></div>
+                    <div class="serp-tabs"><span
+                        class="is-active">All</span><span>Forums</span><span>Images</span><span>Videos</span></div>
+                    <p class="serp-label">Discussions and forums</p>
+                    <div class="serp-result">
+                      <div class="serp-source"><span class="avatar avatar-xs"
+                          style="--c:#ff5a1f">R</span><b>Reddit</b><span>· r/freelance</span></div>
+                      <p class="serp-title">What invoicing tool do you actually use as a freelancer?</p>
+                      <p class="serp-snippet">Switched to YourBrand last year. Recurring invoices + automatic reminders
+                        saved me hours every month…</p>
+                      <p class="serp-meta"><svg class="icon">
+                          <use href="#i-comment" />
+                        </svg>214 comments · 2 months ago</p>
+                    </div>
+                    <div class="skeleton"><span style="width:66%"></span><span style="width:92%"></span><span
+                        style="width:80%"></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-text">
+              <p class="eyebrow">AI search visibility</p>
+              <h3 class="feature-title">Part of the answers AI gives.</h3>
+              <p>Relevant Reddit discussions can also appear in AI-generated answers and recommendations.</p>
+            </div>
+            <div class="frame frame--red frame--left">
+              <div class="frame-panel">
+                <div class="mock" role="img"
+                  aria-label="AI tools such as ChatGPT, Claude, Gemini, Perplexity and DeepSeek answering a product question and recommending the brand, citing Reddit discussions as sources.">
+                  <div aria-hidden="true">
+                    <!-- Logos: Lobe Icons (MIT). Each is a trademark of its owner. -->
+                    <ul class="ai-logos">
+                      <li title="ChatGPT"><img src="ai-icons/chatgpt.svg" alt="ChatGPT" width="20" height="20"></li>
+                      <li title="Claude"><img src="ai-icons/claude.svg" alt="Claude" width="20" height="20"></li>
+                      <li title="Gemini"><img src="ai-icons/gemini.svg" alt="Gemini" width="20" height="20"></li>
+                      <li title="Perplexity"><img src="ai-icons/perplexity.svg" alt="Perplexity" width="20" height="20"></li>
+                      <li title="DeepSeek"><img src="ai-icons/deepseek.svg" alt="DeepSeek" width="20" height="20"></li>
+                    </ul>
+                    <div class="ai-chat">
+                      <div class="ai-question">
+                        <p>What's the best invoicing tool for a freelancer?</p>
+                      </div>
+                      <div class="ai-answer">
+                        <span class="ai-icon"><svg class="icon">
+                            <use href="#i-spark" />
+                          </svg></span>
+                        <div class="ai-text">
+                          <p>Based on discussions from freelancers on Reddit, a few options come up often:</p>
+                          <p><mark>1. YourBrand</mark>, praised for recurring invoices and automatic payment reminders.
+                          </p>
+                          <p>2. A simple spreadsheet template, if you only have a couple of clients.</p>
+                          <div class="ai-sources">
+                            <span>reddit.com/r/freelance</span><span>reddit.com/r/smallbusiness</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. WHY BRANDS STRUGGLE  +  4. HOW WE WORK ============ -->
+    <section id="challenge" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">The challenge</p>
+          <h2>Reddit Is Full of Opportunities, But Standing Out Is Hard.</h2>
+          <div class="section-body">
+            <p>Creating an account and posting about your business isn't enough. Reddit has its own rules, and every
+              community has its own expectations.</p>
+          </div>
+        </div>
+
+        <div class="compare">
+          <div class="own-card">
+            <h3>On your own</h3>
+            <p class="own-sub">Bans, removals and wasted effort.</p>
+            <ol class="problems">
+              <li>
+                <h4><span class="num">01</span>Account Bans &amp; Restrictions</h4>
+                <p>Reddit has strict rules against spam and fake-looking activity. Accounts that break them can be
+                  restricted or banned.</p>
+                <div class="shell" role="img"
+                  aria-label="A notice saying the account has been suspended for breaking Reddit's rules.">
+                  <div class="banned" aria-hidden="true">
+                    <span class="banned-icon"><svg class="icon">
+                        <use href="#i-ban" />
+                      </svg></span>
+                    <div>
+                      <p class="shell-title">This account has been suspended</p>
+                      <p class="shell-text">u/yourbrand_official was suspended for violating Reddit's rules on spam.</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h4><span class="num">02</span>Post &amp; Comment Removals</h4>
+                <p>Every subreddit has its own rules. A post that works in one community can be removed in another.</p>
+                <div class="shell" role="img"
+                  aria-label="A comment that was removed by moderators for breaking the community's no self-promotion rule.">
+                  <div class="comment comment--light" aria-hidden="true">
+                    <span class="avatar" style="--c:#14b8a6">Y</span>
+                    <div class="comment-main">
+                      <p class="comment-meta"><b>u/yourbrand_team</b> · 2h</p>
+                      <p class="removed-text">[ Removed by moderator ]</p>
+                      <p class="rule"><svg class="icon">
+                          <use href="#i-shield" />
+                        </svg>Rule 3: No self-promotion</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h4><span class="num">03</span>Obvious Ads Don't Work Here</h4>
+                <p>Reddit users don't appreciate forced recommendations or obvious advertising. Brands need to add real
+                  value and be open about their business interest.</p>
+                <div class="shell" role="img"
+                  aria-label="An obviously promotional comment that was heavily downvoted, with a reply calling it an ad.">
+                  <div class="comment comment--light" aria-hidden="true">
+                    <span class="avatar" style="--c:#f43f5e">G</span>
+                    <div class="comment-main">
+                      <p class="comment-meta"><b>u/growth_hacker99</b> · 1h</p>
+                      <p class="comment-text">Check out YourBrand!! Best tool ever 🚀 Use code SAVE20</p>
+                      <span class="score score--ring is-down"><svg class="icon">
+                          <use href="#i-up" />
+                        </svg><span>-27</span><svg class="icon">
+                          <use href="#i-down" />
+                        </svg></span>
+                      <div class="light-reply">
+                        <p class="comment-meta"><b>u/skeptical_sam</b> · 58m</p>
+                        <p class="comment-text">nice ad lol</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h4><span class="num">04</span>Consistent Execution Takes Time</h4>
+                <p>Finding the right conversations, researching questions, creating content, publishing, and monitoring
+                  discussions all take dedicated resources.</p>
+                <div class="shell" role="img"
+                  aria-label="A growing backlog of relevant Reddit threads that haven't been answered yet, some already missed.">
+                  <div aria-hidden="true">
+                    <div class="backlog-head">
+                      <p class="shell-title">Threads to respond to</p><span class="backlog-count">148 this week</span>
+                    </div>
+                    <ul class="backlog">
+                      <li><span class="checkbox"></span><span class="backlog-title">Best tool for tracking client
+                          hours?</span><span class="backlog-sub">r/freelance</span><span class="state">Not
+                          started</span></li>
+                      <li><span class="checkbox"></span><span class="backlog-title">Alternatives to spreadsheets for
+                          invoicing</span><span class="backlog-sub">r/smallbusiness</span><span class="state">Not
+                          started</span></li>
+                      <li><span class="checkbox"></span><span class="backlog-title">How do you handle late
+                          payments?</span><span class="backlog-sub">r/Entrepreneur</span><span
+                          class="state state--missed">Missed</span></li>
+                    </ul>
+                    <p class="backlog-more">+145 more</p>
+                  </div>
+                </div>
+              </li>
+            </ol>
+            <a href="#how-we-work" class="bridge">That's where we come in.<svg class="icon">
+                <use href="#i-arrow" />
+              </svg></a>
+          </div>
+
+          <div id="how-we-work" class="how-card">
+            <div class="how-glow" aria-hidden="true"></div>
+            <div class="how-inner">
+              <p class="how-label">With The Internet Catalysts</p>
+              <h3>We Handle the Entire Reddit Marketing Process.</h3>
+              <p class="how-intro">We combine research, content creation, community understanding, and execution to help
+                brands build their presence on Reddit.</p>
+              <ol class="steps">
+                <li><span class="step-num">01</span>
+                  <div>
+                    <h4>Discovery</h4>
+                    <p>We identify the right subreddits and conversations where your target audience is discussing
+                      products and services related to your brand.</p>
+                  </div>
+                </li>
+                <li><span class="step-num">02</span>
+                  <div>
+                    <h4>Analyse</h4>
+                    <p>Understand the conversation, identify the user's needs, and ensure every response aligns with
+                      community rules.</p>
+                  </div>
+                </li>
+                <li><span class="step-num">03</span>
+                  <div>
+                    <h4>Creation</h4>
+                    <p>We write responses that answer the actual question instead of forcing promotion into the
+                      discussion.</p>
+                  </div>
+                </li>
+                <li><span class="step-num">04</span>
+                  <div>
+                    <h4>Publishing</h4>
+                    <p>We introduce your brand when relevant, explain its value, and remain transparent about our
+                      relationship.</p>
+                  </div>
+                </li>
+                <li><span class="step-num">05</span>
+                  <div>
+                    <h4>Metrics</h4>
+                    <p>Track campaign performance, monitor feedback, and continuously optimize based on results.</p>
+                  </div>
+                </li>
+              </ol>
+              <div class="scale">
+                <h4>Built to Scale. Ready to Adapt.</h4>
+                <p>Every brand has different needs. We can adjust team size, posting volume, and resources as your
+                  campaign grows, while following Reddit's rules.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TODO(content): real numbers (user will supply) -->
+        <div class="stats-wrap">
+          <span class="placeholder-badge stats-badge"
+            title="Stand-in content: replace with real data before launch">Placeholder</span>
+          <dl class="stats">
+            <div>
+              <dt>Management</dt>
+              <dd>22+</dd>
+            </div>
+            <div>
+              <dt>Active accounts</dt>
+              <dd>200</dd>
+            </div>
+            <div>
+              <dt>Comments per day</dt>
+              <dd>150+</dd>
+            </div>
+            <div>
+              <dt>Posts per day</dt>
+              <dd>70+</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. OUR WORK & RESULTS ============ -->
+    <section id="our-work" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Our work</p>
+          <h2>Real Work. Real Results.</h2>
+          <div class="section-body">
+            <p>Here's how we've helped brands build their Reddit presence, improve visibility, and reach potential
+              customers.</p>
+          </div>
+          <p class="section-note">Brand names are hidden due to confidentiality.</p>
+        </div>
+
+        <div class="cases">
+          <article class="case">
+            <div class="case-text">
+              <p class="eyebrow">Case study 01 · Finance brand</p>
+              <h3 class="feature-title">From almost no presence to a strong one.</h3>
+              <p>We built the brand's presence by answering the questions people were asking about it.</p>
+            </div>
+            <div class="frame frame--red frame--left">
+              <span class="placeholder-badge"
+                title="Stand-in content: replace with real data before launch">Placeholder</span>
+              <div class="frame-panel">
+                <!-- TODO(content): real growth data. Edit data-points as Month:value pairs. -->
+                <figure class="chart" data-chart data-title="Brand mentions per month"
+                  data-points="Jan:2,Feb:3,Mar:5,Apr:8,May:14,Jun:22,Jul:35,Aug:51,Sep:68,Oct:92,Nov:118,Dec:146">
+                </figure>
+              </div>
+            </div>
+          </article>
+
+          <article class="case">
+            <div class="case-text">
+              <p class="eyebrow">Case study 02 · Custom framing business</p>
+              <h3 class="feature-title">From zero Reddit presence to Google rankings.</h3>
+              <p>The business started with no Reddit presence at all. Its Reddit discussions now show up in Google
+                search.</p>
+              <!-- TODO(content): figures to be added -->
+            </div>
+            <div class="frame frame--orange frame--left">
+              <span class="placeholder-badge"
+                title="Stand-in content: replace with real data before launch">Placeholder</span>
+              <div class="frame-panel">
+                <!-- TODO(content): client will supply the real Google ranking screenshot -->
+                <div class="mock" role="img"
+                  aria-label="A search results page with a Reddit discussion about custom framing ranking at the top.">
+                  <div aria-hidden="true">
+                    <div class="serp-search"><svg class="icon">
+                        <use href="#i-search" />
+                      </svg><span>best custom framing shop online reddit</span></div>
+                    <div class="serp-tabs"><span
+                        class="is-active">All</span><span>Forums</span><span>Images</span><span>Videos</span></div>
+                    <p class="serp-label">Discussions and forums</p>
+                    <div class="serp-result">
+                      <div class="serp-source"><span class="avatar avatar-xs"
+                          style="--c:#ff5a1f">R</span><b>Reddit</b><span>· r/framing</span></div>
+                      <p class="serp-title">Has anyone used an online custom framing service? Worth it?</p>
+                      <p class="serp-snippet">Used them for three prints last month. Packaging was solid and the mat cut
+                        was perfect…</p>
+                      <p class="serp-meta"><svg class="icon">
+                          <use href="#i-comment" />
+                        </svg>87 comments · 5 months ago</p>
+                    </div>
+                    <div class="skeleton"><span style="width:66%"></span><span style="width:92%"></span><span
+                        style="width:80%"></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="case">
+            <div class="case-text">
+              <p class="eyebrow">Case study 03 · Art business</p>
+              <h3 class="feature-title">Its first customer, through Reddit.</h3>
+              <p>Helped an art business get its first customer.</p>
+            </div>
+            <div class="frame frame--amber frame--left">
+              <span class="placeholder-badge"
+                title="Stand-in content: replace with real data before launch">Placeholder</span>
+              <div class="frame-panel">
+                <!-- TODO(content): client will supply the real posts screenshot + views report -->
+                <div class="mock" role="img"
+                  aria-label="A campaign report listing Reddit posts with their subreddit, views and upvotes, plus total views.">
+                  <div aria-hidden="true">
+                    <div class="report-head">
+                      <div>
+                        <p class="mock-label">Campaign report</p>
+                        <p class="report-total">101.2k</p>
+                        <p class="report-sub">Total views across 4 posts</p>
+                      </div>
+                      <span class="report-badge">1st customer acquired</span>
+                    </div>
+                    <div class="report-table">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Post</th>
+                            <th class="sm-cell">Subreddit</th>
+                            <th class="num">Views</th>
+                            <th class="num sm-cell">Upvotes</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="post">Painted my first commission — feedback welcome</td>
+                            <td class="sub sm-cell">r/painting</td>
+                            <td class="num strong">48.2k</td>
+                            <td class="num sm-cell">2.1k</td>
+                          </tr>
+                          <tr>
+                            <td class="post">Process video: acrylic pour on large canvas</td>
+                            <td class="sub sm-cell">r/Art</td>
+                            <td class="num strong">31.7k</td>
+                            <td class="num sm-cell">1.4k</td>
+                          </tr>
+                          <tr>
+                            <td class="post">Where do you buy original art online?</td>
+                            <td class="sub sm-cell">r/HomeDecorating</td>
+                            <td class="num strong">12.9k</td>
+                            <td class="num sm-cell">386</td>
+                          </tr>
+                          <tr>
+                            <td class="post">Gift ideas for an art lover?</td>
+                            <td class="sub sm-cell">r/GiftIdeas</td>
+                            <td class="num strong">8.4k</td>
+                            <td class="num sm-cell">211</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="more-work">
+          <p>To see more of our work, contact us.</p>
+          <a href="contact.html?interest=work" class="btn btn-dark btn-md">Contact Us<svg class="icon btn-arrow">
+              <use href="#i-chevron" />
+            </svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. SERVICES & PRICING ============ -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Services &amp; Pricing</p>
+          <h2>Two Ways We Put Your Brand on Reddit.</h2>
+          <div class="section-body">
+            <p>Start with a Pilot to test Reddit, then scale up with a plan built around your brand.</p>
+          </div>
+        </div>
+
+        <div class="plans">
+          <article class="plan">
+            <p class="plan-step"><span>Step 1</span>Test Reddit</p>
+            <div class="plan-top">
+              <h3>Reddit Posting</h3>
+              <span class="plan-tier">Pilot</span>
+            </div>
+            <p class="plan-price">$749<span>one-time</span></p>
+            <p class="plan-desc">For brands that want to test Reddit marketing. Your brand shows up in the threads where
+              customers ask for recommendations.</p>
+
+            <p class="plan-group">What you get</p>
+            <ul class="plan-features plan-features--spaced">
+              <li><svg class="icon">
+                  <use href="#i-check" />
+                </svg>Thread research</li>
+              <li><svg class="icon">
+                  <use href="#i-check" />
+                </svg>Content creation</li>
+              <li><svg class="icon">
+                  <use href="#i-check" />
+                </svg>Publishing</li>
+              <li><svg class="icon">
+                  <use href="#i-check" />
+                </svg>Up to 30 Reddit mentions (posts and comments)</li>
+              <li><svg class="icon">
+                  <use href="#i-check" />
+                </svg>Results report</li>
+              <li><svg class="icon">
+                  <use href="#i-check" />
+                </svg>Delivered within 15 days</li>
+            </ul>
+
+            <div class="plan-next">
+              <p class="plan-next-label"><svg class="icon">
+                  <use href="#i-arrow" />
+                </svg>After the Pilot</p>
+              <p class="plan-next-title">Scale up when it works</p>
+              <p class="plan-next-text">Move to Enterprise for ongoing Reddit marketing, with a plan built around your
+                brand.</p>
+            </div>
+
+            <a href="contact.html?interest=pilot" class="btn btn-accent btn-md">Start Your Pilot<svg
+                class="icon btn-arrow">
+                <use href="#i-chevron" />
+              </svg></a>
+          </article>
+
+          <span class="plans-arrow" aria-hidden="true"><svg class="icon">
+              <use href="#i-arrow" />
+            </svg></span>
+
+          <article class="plan plan--featured">
+            <p class="plan-step"><span>Step 2</span>Scale up</p>
+            <div class="plan-top">
+              <h3>Full Reddit Marketing</h3>
+              <span class="plan-tier">Enterprise</span>
+            </div>
+            <p class="plan-price">Custom<span>ongoing</span></p>
+            <p class="plan-desc">For brands that want ongoing Reddit marketing at a larger scale. Everything is shaped
+              around your brand's needs.</p>
+
+            <p class="plan-group">What you get</p>
+            <ul class="plan-features">
+              <li><svg class="icon">
+                  <use href="#i-check" />
+                </svg>Thread research and content creation</li>
+              <li><svg class="icon">
+                  <use href="#i-check" />
+                </svg>Content based on your customers' questions</li>
+              <li><svg class="icon">
+                  <use href="#i-check" />
+                </svg>Publishing and community engagement</li>
+              <li><svg class="icon">
+                  <use href="#i-check" />
+                </svg>Performance insights and reporting</li>
+            </ul>
+
+            <p class="plan-group">Only in Enterprise</p>
+            <ul class="plan-features">
+              <li><svg class="icon">
+                  <use href="#i-check" />
+                </svg>Dedicated accounts working only for your brand</li>
+              <li><svg class="icon">
+                  <use href="#i-check" />
+                </svg>A dedicated team running your campaign</li>
+            </ul>
+
+            <div class="plan-addon">
+              <p class="plan-addon-label"><svg class="icon">
+                  <use href="#i-plus" />
+                </svg>Optional add-on</p>
+              <p class="plan-addon-title">Brand Subreddit Building &amp; Management</p>
+              <p class="plan-addon-text">We build and manage your brand's own Reddit community, create discussions, and
+                manage ongoing engagement.</p>
+            </div>
+
+            <a href="contact.html?interest=enterprise" class="btn btn-light btn-md">Let's Talk<svg
+                class="icon btn-arrow">
+                <use href="#i-chevron" />
+              </svg></a>
+          </article>
+        </div>
+        <p class="note-center note-center--tight">Actual publishing volume depends on campaign requirements and relevant
+          opportunities.</p>
+      </div>
+    </section>
+
+    <!-- ============ 7. FAQS ============ -->
+    <section id="faqs" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">FAQs</p>
+          <h2>Questions, answered.</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>How does your Reddit marketing work?<svg class="icon faq-icon">
+                <use href="#i-plus" />
+              </svg></summary>
+            <p>We identify relevant discussions, create helpful responses, and introduce your brand when it genuinely
+              fits the conversation.</p>
+          </details>
+          <details>
+            <summary>How much does Reddit marketing cost?<svg class="icon faq-icon">
+                <use href="#i-plus" />
+              </svg></summary>
+            <p>Our Pilot package is $749. Enterprise campaigns are priced according to your requirements.</p>
+          </details>
+          <details>
+            <summary>How long does it take to see results?<svg class="icon faq-icon">
+                <use href="#i-plus" />
+              </svg></summary>
+            <p>A Pilot is delivered within 15 days. For ongoing campaigns, initial activity can begin in the first
+              month, depending on available opportunities. Search visibility and longer-term results can take several
+              months and aren't guaranteed.</p>
+          </details>
+          <details>
+            <summary>How do you report campaign progress?<svg class="icon faq-icon">
+                <use href="#i-plus" />
+              </svg></summary>
+            <p>We provide reports covering relevant discussions around your brand and niche, published content views,
+              engagement, and campaign progress.</p>
+          </details>
+          <details>
+            <summary>What happens if a Reddit post or comment gets removed?<svg class="icon faq-icon">
+                <use href="#i-plus" />
+              </svg></summary>
+            <p>We review the reason, assess whether the content needs to be changed, and adjust our approach. We don't
+              repeatedly repost removed content.</p>
+          </details>
+          <details>
+            <summary>What happens if an account gets banned?<svg class="icon faq-icon">
+                <use href="#i-plus" />
+              </svg></summary>
+            <p>We investigate the reason, review the applicable rules, and follow the right resolution steps or file an
+              appeal. We don't use ban evasion.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8. FINAL CTA ============ -->
+    <section id="get-started" class="section">
+      <div class="container">
+        <div class="cta-box">
+          <div class="cta-dots" aria-hidden="true"></div>
+          <div class="cta-glow" aria-hidden="true"></div>
+          <div class="cta-inner">
+            <h2>Your Customers Are Already Talking on Reddit.</h2>
+            <div class="cta-body">
+              <p>It's time your brand became part of those conversations.</p>
+              <p>Let us handle the research, content, and execution while you focus on growing your business.</p>
+            </div>
+            <a href="contact.html" class="btn btn-accent btn-lg">Let's Talk About Your Brand<svg
+                class="icon btn-arrow">
+                <use href="#i-chevron" />
+              </svg></a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer">
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Grow through Reddit</span><i>✦</i>
-        <span class="outline">Find the right threads</span><i>✦</i>
-        <span>Create content that fits</span><i>✦</i>
-        <span class="outline">Track every result</span><i>✦</i>
-        <span>Grow through Reddit</span><i>✦</i>
-        <span class="outline">Find the right threads</span><i>✦</i>
-        <span>Create content that fits</span><i>✦</i>
-        <span class="outline">Track every result</span><i>✦</i>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo logo--footer"><img src="logo.png" alt="The Internet Catalysts" width="955"
+            height="247" loading="lazy"></a>
+        <p>We put your brand on Reddit, in the conversations where customers ask questions, compare products and look
+          for recommendations.</p>
       </div>
+      <nav aria-label="Footer">
+        <ul class="footer-links">
+          <li><a href="#why-reddit">Why Reddit</a></li>
+          <li><a href="#how-we-work">How We Work</a></li>
+          <li><a href="#our-work">Our Work</a></li>
+          <li><a href="#services">Services &amp; Pricing</a></li>
+          <li><a href="#faqs">FAQs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-
-    <div class="container">
-      <div class="footer-box">
-        <div class="footer-top">
-          <div class="footer-brand">
-            <a class="brand brand--dark" href="#home">
-              <img class="brand-logo-img" src="assets/logo.png" width="955" height="247" alt="The Internet Catalysts" loading="lazy">
-            </a>
-            <p>The Internet Catalysts helps brands grow through Reddit, from finding the right threads to creating content and posting it.</p>
-          </div>
-
-          <div class="footer-col">
-            <h4>Explore</h4>
-            <a href="#why">Why Reddit</a>
-            <a href="#growth">Growth</a>
-            <a href="#process">How we do it</a>
-            <a href="#pricing">Packages</a>
-          </div>
-
-          <div class="footer-col">
-            <h4>Contact</h4>
-            <a href="mailto:theinternetcatalysts@gmail.com">theinternetcatalysts@gmail.com</a>
-            <a href="tel:+919430455228">+91 94304 55228</a>
-            <a href="https://wa.me/919430455228" target="_blank" rel="noopener">WhatsApp</a>
-          </div>
-
-          <div class="footer-col">
-            <h4>Follow</h4>
-            <!-- Add your social profile links -->
-            <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="#" target="_blank" rel="noopener">X (Twitter)</a>
-            <a href="#" target="_blank" rel="noopener">Reddit</a>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>© <span data-year>2026</span> The Internet Catalysts. All rights reserved.</p>
-          <a class="to-top" href="#home">Back to top <svg class="i"><use href="#i-arrow-up"/></svg></a>
-        </div>
-      </div>
+    <div class="container footer-bottom">
+      <p class="copyright">© 2026 The Internet Catalysts. Reddit marketing agency. Not affiliated with Reddit, Inc.</p>
+      <ul class="footer-legal">
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+      </ul>
     </div>
   </footer>
-
-  <!-- Sticky WhatsApp button -->
-  <a class="wa-float" href="https://wa.me/919430455228" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
-    <svg class="i"><use href="#i-whatsapp"/></svg>
-    <span class="wa-float-label">Chat with us</span>
-  </a>
-
-  <script src="js/main.js"></script>
 </body>
+
 </html>
