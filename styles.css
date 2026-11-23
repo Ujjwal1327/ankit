@@ -881,6 +881,8 @@ table { border-collapse: collapse; }
 .form-note, .form-alt { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
 .form-note .icon, .form-alt .icon { font-size: 16px; color: var(--accent); }
 .form-alt { padding-top: 18px; border-top: 1px solid var(--line); color: var(--body); }
+.form-alt a { color: var(--ink); font-weight: 500; text-decoration: underline; text-underline-offset: 2px; }
+.form-alt a:hover { color: var(--accent); }
 .form-status { font-size: 14px; font-weight: 500; color: #dc2626; }
 .btn:disabled { opacity: .7; cursor: progress; }
 .btn:disabled .btn-arrow { transform: none; }
