@@ -75,18 +75,21 @@
     show(0);
   });
 
-  /* ---------- Contact form ---------- */
-  var form = document.querySelector("[data-contact-form]");
-  // Sends to the Google Apps Script web app in form.action, which adds a row to the "Leads" Google Sheet
-  // Backend code: google-apps-script/Code.gs in the GitHub repo (Ujjwal1327/ankit).
-  if (form) {
-    var success = document.querySelector("[data-form-success]");
+  /* ---------- Sheet forms (contact form, Reddit user form) ----------
+     Each form posts to the Google Apps Script web app in its action="…", which adds a row to the
+     Google Sheet and emails a copy. Backend code: google-apps-script/Code.gs in the GitHub repo
+     (Ujjwal1327/ankit). data-required lists the fields the script insists on. */
+  document.querySelectorAll("[data-sheet-form]").forEach(function (form) {
+    var panel = form.parentElement;
+    var success = panel.querySelector("[data-form-success]");
     var status = form.querySelector("[data-form-status]");
     var submitBtn = form.querySelector("[data-submit]");
     var submitLabel = form.querySelector("[data-submit-label]");
-    var packageSelect = form.querySelector('select[name="package"]');
+    var submitText = submitLabel.textContent;
+    var required = (form.dataset.required || "").split(",").filter(Boolean);
 
-    // Buttons around the site link here as contact.html?interest=pilot|enterprise|work|unsure
+    // Contact form: buttons around the site link here as contact.html?interest=pilot|enterprise|work|report
+    var packageSelect = form.querySelector('select[name="package"]');
     var interest = new URLSearchParams(window.location.search).get("interest");
     if (interest && packageSelect) {
       Array.prototype.forEach.call(packageSelect.options, function (o) {
@@ -99,7 +102,7 @@
     };
     var setSending = function (sending) {
       submitBtn.disabled = sending;
-      submitLabel.textContent = sending ? "Sending…" : "Send";
+      submitLabel.textContent = sending ? "Sending…" : submitText;
     };
     var showSuccess = function () {
       form.hidden = true;
@@ -121,11 +124,19 @@
         return;
       }
 
-      // the sheet script rejects blank name/email/message, so catch whitespace-only answers here
-      var missing = ["name", "email", "message"].filter(function (k) { return !String(data.get(k) || "").trim(); });
+      // the sheet script rejects blank required fields, so catch whitespace-only answers here
+      var missing = required.filter(function (k) { return !String(data.get(k) || "").trim(); });
       if (missing.length) {
-        setStatus("Please fill in your name, email and message.");
+        setStatus("Please fill in all the required fields.");
         form.elements[missing[0]].focus();
+        return;
+      }
+
+      // Reddit user form: make sure the profile field looks like a Reddit profile
+      var reddit = form.querySelector("[data-reddit-profile]");
+      if (reddit && !/(reddit\.com\/(u|user)\/[^\s/]+|^\/?u\/[^\s/]+)/i.test(reddit.value.trim())) {
+        setStatus("Please enter your Reddit profile link, like https://www.reddit.com/user/yourname");
+        reddit.focus();
         return;
       }
 
@@ -138,13 +149,13 @@
           showSuccess();
         })
         .catch(function (err) {
-          console.error("Contact form error:", err);
+          console.error("Form error:", err);
           setStatus("Something went wrong. Please try again, or email us directly.");
         })
         .finally(function () { setSending(false); });
     });
 
-    var resetBtn = document.querySelector("[data-form-reset]");
+    var resetBtn = panel.querySelector("[data-form-reset]");
     if (resetBtn) {
       resetBtn.addEventListener("click", function () {
         form.reset();
@@ -154,7 +165,35 @@
         form.elements.name.focus();
       });
     }
-  }
+  });
+
+  /* ---------- Social dropdown: pick WhatsApp / Telegram / Discord, then the link box appears ---------- */
+  document.querySelectorAll("[data-social-select]").forEach(function (select) {
+    var field = select.form.querySelector("[data-social-field]");
+    var input = field.querySelector("input");
+    var label = field.querySelector("[data-social-label]");
+
+    function update() {
+      var option = select.options[select.selectedIndex];
+      var chosen = Boolean(select.value);
+      field.hidden = !chosen;
+      input.disabled = !chosen; // disabled fields aren't sent
+      input.required = chosen;
+      if (chosen) {
+        label.textContent = option.dataset.label;
+        input.placeholder = option.dataset.placeholder;
+      } else {
+        input.value = "";
+      }
+    }
+
+    select.addEventListener("change", function () {
+      update();
+      if (select.value) input.focus();
+    });
+    select.form.addEventListener("reset", function () { setTimeout(update, 0); });
+    update();
+  });
 
   /* ---------- Growth chart: built from data-points="Jan:2,Feb:3,…" ---------- */
   var SVG_NS = "http://www.w3.org/2000/svg";

@@ -816,7 +816,9 @@ table { border-collapse: collapse; }
 .footer-brand p { margin-top: 16px; font-size: 14px; line-height: 1.625; color: var(--body); }
 .footer-links { display: grid; grid-template-columns: repeat(2, auto); gap: 10px 40px; font-size: 14px; }
 .footer-links a { color: var(--body); transition: color .15s ease; }
-.footer-links a:hover { color: var(--ink); }
+.footer-links a:hover, .footer-links a[aria-current="page"] { color: var(--ink); }
+.footer-links a { display: inline-flex; align-items: center; gap: 4px; }
+.footer-ext { font-size: 12px; opacity: .7; }
 .footer-bottom {
   position: relative; margin-top: 40px; padding-top: 20px;
   display: flex; flex-direction: column; gap: 12px;
@@ -853,6 +855,9 @@ table { border-collapse: collapse; }
 @media (min-width: 640px) { .contact-form { padding: 32px; } }
 .field-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
 @media (min-width: 640px) { .field-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* Social: dropdown first, link box appears beside it once a platform is picked */
+.social-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+@media (min-width: 640px) { .social-row { grid-template-columns: 200px minmax(0, 1fr); } }
 .field { display: flex; flex-direction: column; gap: 6px; }
 .field label { font-size: 14px; font-weight: 600; color: var(--ink); }
 .field input, .field select, .field textarea {
